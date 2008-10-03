@@ -14,6 +14,12 @@ class SoftbankTest < Test::Unit::TestCase
       assert_equal("000000000000000", req.mobile.ident_device)
       assert_equal(nil, req.mobile.ident_subscriber)
       assert(req.mobile.supports_cookie?)
+      
+      assert_equal("910T", req.mobile.device_id)
+      assert_equal("910T", req.mobile.device_name)
+      assert_equal(true, req.mobile.gif?)
+      assert_equal(true, req.mobile.jpg?)
+      assert_equal(true, req.mobile.png?)
     end
   end
 
@@ -40,6 +46,12 @@ class SoftbankTest < Test::Unit::TestCase
       assert_equal(nil, req.mobile.position)
       assert_equal(nil, req.mobile.ident)
       assert(req.mobile.supports_cookie?)
+      
+      assert_equal("V903T", req.mobile.device_id)
+      assert_equal("903T", req.mobile.device_name)
+      assert_equal(true, req.mobile.gif?)
+      assert_equal(true, req.mobile.jpg?)
+      assert_equal(true, req.mobile.png?)
     end
   end
 
@@ -56,6 +68,12 @@ class SoftbankTest < Test::Unit::TestCase
       assert_equal(nil, req.mobile.ident_subscriber)
       assert_equal(nil, req.mobile.position)
       assert(req.mobile.supports_cookie?)
+      
+      assert_equal("V903SH", req.mobile.device_id)
+      assert_equal("903SH", req.mobile.device_name)
+      assert_equal(true, req.mobile.gif?)
+      assert_equal(true, req.mobile.jpg?)
+      assert_equal(true, req.mobile.png?)
     end
   end
 
@@ -72,6 +90,12 @@ class SoftbankTest < Test::Unit::TestCase
       assert_equal(nil, req.mobile.ident_subscriber)
       assert_equal(nil, req.mobile.position)
       assert(!req.mobile.supports_cookie?)
+      
+      assert_equal("V603SH", req.mobile.device_id)
+      assert_equal("V603SH", req.mobile.device_name)
+      assert_equal(false, req.mobile.gif?)
+      assert_equal(true, req.mobile.jpg?)
+      assert_equal(true, req.mobile.png?)
     end
   end
 
@@ -85,6 +109,12 @@ class SoftbankTest < Test::Unit::TestCase
       assert_equal(nil, req.mobile.serial_number)
       assert_equal(nil, req.mobile.position)
       assert(!req.mobile.supports_cookie?)
+      
+      assert_equal("V301D", req.mobile.device_id)
+      assert_equal("V301D", req.mobile.device_name)
+      assert_equal(false, req.mobile.gif?)
+      assert_equal(true, req.mobile.jpg?)
+      assert_equal(true, req.mobile.png?)
     end
   end
 
@@ -176,6 +206,19 @@ class SoftbankTest < Test::Unit::TestCase
       assert_equal(nil, req.mobile.display.physical_height)
       assert_equal(nil, req.mobile.display.color?)
       assert_equal(nil, req.mobile.display.colors)
+    end
+  end
+  
+  # 機種情報を正しく取得できるか
+  def test_softbank_V702NK_device_info
+    reqs = request_with_ua("Vodafone/1.0/V702NK/NKJ001[/Serial] Series60/2.6 Nokia6630/2.39.148 Profile/MIDP-2.0 Configuration/CLDC-1.1")
+    reqs.each do |req|
+      assert_equal("V702NK", req.mobile.device_id)
+      assert_equal("702NK (NOKIA 6630)", req.mobile.device_name)
+      
+      assert_equal(true, req.mobile.gif?)
+      assert_equal(true, req.mobile.jpg?)
+      assert_equal(true, req.mobile.png?)
     end
   end
 end

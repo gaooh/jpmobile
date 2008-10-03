@@ -13,5 +13,19 @@ module Jpmobile::Mobile
       @request.env['HTTP_X_EM_UID']
     end
     alias :ident_subscriber :em_uid
+    
+    def device_id
+      if @request.env["HTTP_USER_AGENT"] =~ /^emobile\/1.0.0 \(([^;]+)/
+        return $1
+      elsif @request.env["HTTP_USER_AGENT"] =~ /^Mozilla\/[^)]+\) (.+)$/
+        return $1
+      end
+    end
+    # 現状デバイスIDから名前をひく方法はないので
+    alias :device_name :device_id
+    
+    def gif?; true; end
+    def jpg?; true; end
+    def png?; true; end
   end
 end

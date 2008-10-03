@@ -8,6 +8,7 @@ module Jpmobile::Mobile
   # Vodafone, Jphoneのスーパクラス。
   class Softbank < AbstractMobile
     autoload :IP_ADDRESSES, 'jpmobile/mobile/z_ip_addresses_softbank'
+    autoload :DEVICE_INFO,  'jpmobile/mobile/z_device_info_softbank'
 
     # 対応するuser-agentの正規表現
     USER_AGENT_REGEXP = /^(?:SoftBank|Semulator)/
@@ -67,6 +68,27 @@ module Jpmobile::Mobile
     def supports_cookie?
       true
     end
+    
+    def device_id
+      @request.env['HTTP_USER_AGENT'] =~ /^SoftBank\/[^\/]+\/([^\/]+)\// ? $1 : nil
+    end
+    
+    def device_name
+      Jpmobile::Mobile::Softbank::DEVICE_INFO[device_id][:name]
+    end
+    
+    def gif?
+      Jpmobile::Mobile::Softbank::DEVICE_INFO[device_id][:gif] == "1" ? true : false
+    end
+    
+    def jpg?
+      Jpmobile::Mobile::Softbank::DEVICE_INFO[device_id][:jpg] == "1" ? true : false
+    end
+    
+    def png?
+      Jpmobile::Mobile::Softbank::DEVICE_INFO[device_id][:png] == "1" ? true : false
+    end
+    
   end
   # ==Vodafone 3G携帯電話(J-PHONE, SoftBank含まず)
   # スーパクラスはSoftbank。
@@ -80,6 +102,15 @@ module Jpmobile::Mobile
     def supports_cookie?
       true
     end
+    
+    def device_id
+      @request.env['HTTP_USER_AGENT'] =~ /^Vodafone\/[^\/]+\/([^\/]+)\// ? $1 : nil
+    end
+    
+    def device_name
+      Jpmobile::Mobile::Softbank::DEVICE_INFO[device_id][:name]
+    end
+    
   end
   # ==SoftBank 2G携帯電話(J-PHONE/Vodafone 2G)
   # スーパクラスはVodafone。
@@ -106,5 +137,14 @@ module Jpmobile::Mobile
     def supports_cookie?
       false
     end
+    
+    def device_id
+      @request.env['HTTP_USER_AGENT'] =~ /^J-PHONE\/[^\/]+\/([^\/]+)\/?/ ? $1 : nil
+    end
+    
+    def device_name
+      Jpmobile::Mobile::Softbank::DEVICE_INFO[device_id][:name]
+    end
+    
   end
 end

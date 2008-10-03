@@ -27,6 +27,17 @@ module Jpmobile::Mobile
     def supports_cookie?
       true
     end
+    
+    def device_id
+      @request.env['HTTP_USER_AGENT'] =~ /^Mozilla\/3.0[^\/]+\/([^\/]+)\// ? $1 : nil
+    end
+    # 現状デバイスIDから名前をひく方法はないので
+    alias :device_name :device_id
+    
+    def gif?; true; end
+    def jpg?; true; end
+    def png?; true; end
+    
   end
   # ==DDI-POCKET
   # スーパクラスはWillcom。

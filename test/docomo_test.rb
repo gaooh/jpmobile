@@ -15,6 +15,12 @@ class DocomoTest < Test::Unit::TestCase
       assert_equal(nil, req.mobile.ident_device)
       assert_equal(nil, req.mobile.ident_subscriber)
       assert(!req.mobile.supports_cookie?)
+      
+      assert_equal("SH902i", req.mobile.device_id)
+      assert_equal("SH902i", req.mobile.device_name)
+      assert_equal(true, req.mobile.gif?)
+      assert_equal(true, req.mobile.jpg?)
+      assert_equal(false, req.mobile.png?)
     end
   end
 
@@ -31,6 +37,12 @@ class DocomoTest < Test::Unit::TestCase
       assert_equal(nil, req.mobile.ident)
       assert_equal(nil, req.mobile.ident_device)
       assert_equal(nil, req.mobile.ident_subscriber)
+      
+      assert_equal("SO506iC", req.mobile.device_id)
+      assert_equal("SO506iC", req.mobile.device_name)
+      assert_equal(true, req.mobile.gif?)
+      assert_equal(true, req.mobile.jpg?)
+      assert_equal(false, req.mobile.png?)
     end
   end
 
@@ -143,6 +155,18 @@ class DocomoTest < Test::Unit::TestCase
       assert_equal(240, req.mobile.display.height)
       assert_equal(true, req.mobile.display.color?)
       assert_equal(262144, req.mobile.display.colors)
+    end
+  end
+  
+  # 機種情報を正しく取得できるか
+  def test_docomo_F881iES_device_info
+    reqs = request_with_ua("DoCoMo/2.0 F881iES(c100;TB;W24H12)")
+    reqs.each do |req|
+      assert_equal("F881iES", req.mobile.device_id)
+      assert_equal("F881iES (FOMAらくらくホンII)", req.mobile.device_name)
+      assert_equal(true, req.mobile.gif?)
+      assert_equal(true, req.mobile.jpg?)
+      assert_equal(false, req.mobile.png?)
     end
   end
 end

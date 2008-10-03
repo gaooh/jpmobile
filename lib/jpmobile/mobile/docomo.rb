@@ -5,7 +5,8 @@ module Jpmobile::Mobile
   class Docomo < AbstractMobile
     autoload :IP_ADDRESSES, 'jpmobile/mobile/z_ip_addresses_docomo'
     autoload :DISPLAY_INFO, 'jpmobile/mobile/z_display_info_docomo'
-
+    autoload :DEVICE_INFO,  'jpmobile/mobile/z_device_info_docomo'
+    
     # 対応するUser-Agentの正規表現
     USER_AGENT_REGEXP = /^DoCoMo/
     # 対応するメールアドレスの正規表現
@@ -78,9 +79,8 @@ module Jpmobile::Mobile
     def supports_cookie?
       false
     end
-    private
-    # モデル名を返す。
-    def model_name
+    
+    def device_id
       if @request.env["HTTP_USER_AGENT"] =~ /^DoCoMo\/2.0 (.+)\(/
         return $1
       elsif @request.env["HTTP_USER_AGENT"] =~ /^DoCoMo\/1.0\/(.+?)\//
@@ -88,10 +88,28 @@ module Jpmobile::Mobile
       end
       return nil
     end
+    
+    def device_name
+      device_id.nil? ? nil : Jpmobile::Mobile::Docomo::DEVICE_INFO[device_id][:name]
+    end
+    
+    def gif?
+      Jpmobile::Mobile::Docomo::DEVICE_INFO[device_id][:gif] == "1" ? true : false
+    end
+    
+    def jpg?
+      Jpmobile::Mobile::Docomo::DEVICE_INFO[device_id][:jpg] == "1" ? true : false
+    end
+    
+    def png?
+      Jpmobile::Mobile::Docomo::DEVICE_INFO[device_id][:png] == "1" ? true : false
+    end
+    
+    private
 
     # 画面の情報を含むハッシュを返す。
     def display_info
-      DISPLAY_INFO[model_name] || {}
+      DISPLAY_INFO[device_name] || {}
     end
   end
 end

@@ -13,6 +13,11 @@ class AuTest < Test::Unit::TestCase
       assert_equal("00000000000000_mj.ezweb.ne.jp", req.mobile.ident_subscriber)
       assert_equal(nil, req.mobile.position)
       assert(req.mobile.supports_cookie?)
+      
+      assert_equal("W31CA", req.mobile.device_name)
+      assert_equal(true, req.mobile.gif?)
+      assert_equal(true, req.mobile.jpg?)
+      assert_equal(true, req.mobile.png?)
     end
   end
 
@@ -168,6 +173,18 @@ class AuTest < Test::Unit::TestCase
       assert_equal("KCTA", req.mobile.device_id)
       assert_equal(false, req.mobile.supports_location?)
       assert_equal(false, req.mobile.supports_gps?)
+    end
+  end
+  
+  # 機種情報の取得
+  def test_au_device_info
+    reqs = request_with_ua("KDDI-KC33 UP.Browser/6.2.0.9 (GUI) MMP/2.0")
+    reqs.each do |req|
+      assert_equal("KC33", req.mobile.device_id)
+      assert_equal("W31K/K II", req.mobile.device_name)
+      assert_equal(true, req.mobile.gif?)
+      assert_equal(true, req.mobile.jpg?)
+      assert_equal(false, req.mobile.png?)
     end
   end
 end

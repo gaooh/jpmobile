@@ -7,7 +7,8 @@ module Jpmobile::Mobile
   # CDMA 1X, CDMA 1X WINを含む。
   class Au < AbstractMobile
     autoload :IP_ADDRESSES, 'jpmobile/mobile/z_ip_addresses_au'
-
+    autoload :DEVICE_INFO, 'jpmobile/mobile/z_device_info_au'
+    
     # 対応するUser-Agentの正規表現
     # User-Agent文字列中に "UP.Browser" を含むVodafoneの端末があるので注意が必要
     USER_AGENT_REGEXP = /^(?:KDDI|UP.Browser\/.+?)-(.+?) /
@@ -77,6 +78,22 @@ module Jpmobile::Mobile
       else
         nil
       end
+    end
+    
+    def device_name
+      Jpmobile::Mobile::Au::DEVICE_INFO[device_id][:name]
+    end
+    
+    def gif?
+      Jpmobile::Mobile::Au::DEVICE_INFO[device_id][:gif] == "1" ? true : false
+    end
+    
+    def jpg?
+      Jpmobile::Mobile::Au::DEVICE_INFO[device_id][:jpg] == "1" ? true : false
+    end
+    
+    def png?
+      Jpmobile::Mobile::Au::DEVICE_INFO[device_id][:png] == "1" ? true : false
     end
     
     # 簡易位置情報取得に対応している場合は +true+ を返す。

@@ -21,7 +21,18 @@ module Jpmobile::Mobile
     def ident_subscriber; nil; end
     # 端末を識別する文字列があれば返す。
     def ident_device; nil; end
-
+    
+    # デバイスIDがあれば返す。
+    def device_id; nil; end
+    # 機種名称があれば返す。
+    def device_name; nil; end
+    # gif画像に対応しているか。
+    def gif?; false; end
+    # jpg画像に対応しているか。
+    def jpg?; false; end
+    # png画像に対応しているか。
+    def png?; false; end
+    
     # 当該キャリアのIPアドレス帯域からのアクセスであれば +true+ を返す。
     # そうでなければ +false+ を返す。
     # IP空間が定義されていない場合は +nil+ を返す。

@@ -10,6 +10,12 @@ class WillcomTest < Test::Unit::TestCase
       assert_equal(nil, req.mobile.position)
       assert_equal(nil, req.mobile.ident)
       assert(req.mobile.supports_cookie?)
+      
+      assert_equal("WX310K", req.mobile.device_name)
+      assert_equal("WX310K", req.mobile.device_id)
+      assert_equal(true, req.mobile.gif?)
+      assert_equal(true, req.mobile.jpg?)
+      assert_equal(true, req.mobile.png?)
     end
   end
 
