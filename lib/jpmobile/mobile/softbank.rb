@@ -77,16 +77,26 @@ module Jpmobile::Mobile
       Jpmobile::Mobile::Softbank::DEVICE_INFO[device_id][:name]
     end
     
+    def css?
+      device_info_use_function?(:css)
+    end
+    
     def gif?
-      Jpmobile::Mobile::Softbank::DEVICE_INFO[device_id][:gif] == "1" ? true : false
+      device_info_use_function?(:gif)
     end
     
     def jpg?
-      Jpmobile::Mobile::Softbank::DEVICE_INFO[device_id][:jpg] == "1" ? true : false
+      device_info_use_function?(:jpg)
     end
     
     def png?
-      Jpmobile::Mobile::Softbank::DEVICE_INFO[device_id][:png] == "1" ? true : false
+      device_info_use_function?(:png)
+    end
+    
+    private 
+    
+    def device_info_use_function?(function)
+      Jpmobile::Mobile::Softbank::DEVICE_INFO[device_id][function] == "1" ? true : false
     end
     
   end

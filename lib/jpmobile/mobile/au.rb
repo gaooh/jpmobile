@@ -84,16 +84,20 @@ module Jpmobile::Mobile
       Jpmobile::Mobile::Au::DEVICE_INFO[device_id][:name]
     end
     
+    def css?
+      device_info_use_function?(:css)
+    end
+    
     def gif?
-      Jpmobile::Mobile::Au::DEVICE_INFO[device_id][:gif] == "1" ? true : false
+      device_info_use_function?(:gif)
     end
     
     def jpg?
-      Jpmobile::Mobile::Au::DEVICE_INFO[device_id][:jpg] == "1" ? true : false
+      device_info_use_function?(:jpg)
     end
     
     def png?
-      Jpmobile::Mobile::Au::DEVICE_INFO[device_id][:png] == "1" ? true : false
+      device_info_use_function?(:png)
     end
     
     # 簡易位置情報取得に対応している場合は +true+ を返す。
@@ -109,6 +113,12 @@ module Jpmobile::Mobile
     # cookieに対応しているか？
     def supports_cookie?
       true
+    end
+    
+    private
+    
+    def device_info_use_function?(function)
+      Jpmobile::Mobile::Au::DEVICE_INFO[device_id][function] == "1" ? true : false
     end
   end
 end

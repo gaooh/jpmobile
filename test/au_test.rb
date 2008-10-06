@@ -15,6 +15,7 @@ class AuTest < Test::Unit::TestCase
       assert(req.mobile.supports_cookie?)
       
       assert_equal("W31CA", req.mobile.device_name)
+      assert_equal(false, req.mobile.css?)
       assert_equal(true, req.mobile.gif?)
       assert_equal(true, req.mobile.jpg?)
       assert_equal(true, req.mobile.png?)
@@ -182,6 +183,7 @@ class AuTest < Test::Unit::TestCase
     reqs.each do |req|
       assert_equal("KC33", req.mobile.device_id)
       assert_equal("W31K/K II", req.mobile.device_name)
+      assert_equal(true, req.mobile.css?)
       assert_equal(true, req.mobile.gif?)
       assert_equal(true, req.mobile.jpg?)
       assert_equal(false, req.mobile.png?)

@@ -25,6 +25,9 @@ describe "H11T モバイルブラウザからのアクセス", :behaviour_type=>
   it "の機種名を取得できること" do
     request.mobile.device_name.should == "H11T"
   end
+  it "のcss? は true であること" do
+    request.mobile.css?.should be_true
+  end
   it "のgif? は true であること" do
     request.mobile.gif?.should be_true
   end
@@ -52,6 +55,9 @@ describe "S11HT からのアクセス", :behaviour_type=>:controller do
   end
   it "の機種名を取得できること" do
     request.mobile.device_name.should == "S11HT"
+  end
+  it "のcss? は true であること" do
+    request.mobile.css?.should be_true
   end
   it "のgif? は true であること" do
     request.mobile.gif?.should be_true

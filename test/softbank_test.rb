@@ -17,6 +17,7 @@ class SoftbankTest < Test::Unit::TestCase
       
       assert_equal("910T", req.mobile.device_id)
       assert_equal("910T", req.mobile.device_name)
+      assert_equal(false, req.mobile.css?)
       assert_equal(true, req.mobile.gif?)
       assert_equal(true, req.mobile.jpg?)
       assert_equal(true, req.mobile.png?)
@@ -49,6 +50,7 @@ class SoftbankTest < Test::Unit::TestCase
       
       assert_equal("V903T", req.mobile.device_id)
       assert_equal("903T", req.mobile.device_name)
+      assert_equal(true, req.mobile.css?)
       assert_equal(true, req.mobile.gif?)
       assert_equal(true, req.mobile.jpg?)
       assert_equal(true, req.mobile.png?)
@@ -71,6 +73,7 @@ class SoftbankTest < Test::Unit::TestCase
       
       assert_equal("V903SH", req.mobile.device_id)
       assert_equal("903SH", req.mobile.device_name)
+      assert_equal(true, req.mobile.css?)
       assert_equal(true, req.mobile.gif?)
       assert_equal(true, req.mobile.jpg?)
       assert_equal(true, req.mobile.png?)
@@ -93,6 +96,7 @@ class SoftbankTest < Test::Unit::TestCase
       
       assert_equal("V603SH", req.mobile.device_id)
       assert_equal("V603SH", req.mobile.device_name)
+      assert_equal(false, req.mobile.css?)
       assert_equal(false, req.mobile.gif?)
       assert_equal(true, req.mobile.jpg?)
       assert_equal(true, req.mobile.png?)
@@ -112,6 +116,7 @@ class SoftbankTest < Test::Unit::TestCase
       
       assert_equal("V301D", req.mobile.device_id)
       assert_equal("V301D", req.mobile.device_name)
+      assert_equal(false, req.mobile.css?)
       assert_equal(false, req.mobile.gif?)
       assert_equal(true, req.mobile.jpg?)
       assert_equal(true, req.mobile.png?)
@@ -216,6 +221,7 @@ class SoftbankTest < Test::Unit::TestCase
       assert_equal("V702NK", req.mobile.device_id)
       assert_equal("702NK (NOKIA 6630)", req.mobile.device_name)
       
+      assert_equal(false, req.mobile.css?)
       assert_equal(true, req.mobile.gif?)
       assert_equal(true, req.mobile.jpg?)
       assert_equal(true, req.mobile.png?)

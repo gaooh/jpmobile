@@ -13,6 +13,7 @@ class WillcomTest < Test::Unit::TestCase
       
       assert_equal("WX310K", req.mobile.device_name)
       assert_equal("WX310K", req.mobile.device_id)
+      assert_equal(true, req.mobile.css?)
       assert_equal(true, req.mobile.gif?)
       assert_equal(true, req.mobile.jpg?)
       assert_equal(true, req.mobile.png?)

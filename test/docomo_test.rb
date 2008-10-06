@@ -40,6 +40,7 @@ class DocomoTest < Test::Unit::TestCase
       
       assert_equal("SO506iC", req.mobile.device_id)
       assert_equal("SO506iC", req.mobile.device_name)
+      assert_equal(false, req.mobile.css?)
       assert_equal(true, req.mobile.gif?)
       assert_equal(true, req.mobile.jpg?)
       assert_equal(false, req.mobile.png?)
@@ -164,6 +165,7 @@ class DocomoTest < Test::Unit::TestCase
     reqs.each do |req|
       assert_equal("F881iES", req.mobile.device_id)
       assert_equal("F881iES (FOMAらくらくホンII)", req.mobile.device_name)
+      assert_equal(false, req.mobile.css?)
       assert_equal(true, req.mobile.gif?)
       assert_equal(true, req.mobile.jpg?)
       assert_equal(false, req.mobile.png?)

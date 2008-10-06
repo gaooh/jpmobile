@@ -34,6 +34,8 @@ module Jpmobile::Mobile
     # 現状デバイスIDから名前をひく方法はないので
     alias :device_name :device_id
     
+    def css?; true; end
+    
     def gif?; true; end
     def jpg?; true; end
     def png?; true; end

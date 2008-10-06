@@ -26,6 +26,8 @@ module Jpmobile::Mobile
     def device_id; nil; end
     # 機種名称があれば返す。
     def device_name; nil; end
+    # cssに対応しているか。
+    def css?; false; end
     # gif画像に対応しているか。
     def gif?; false; end
     # jpg画像に対応しているか。

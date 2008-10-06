@@ -93,16 +93,20 @@ module Jpmobile::Mobile
       device_id.nil? ? nil : Jpmobile::Mobile::Docomo::DEVICE_INFO[device_id][:name]
     end
     
+    def css?
+      device_info_use_function?(:css)
+    end
+    
     def gif?
-      Jpmobile::Mobile::Docomo::DEVICE_INFO[device_id][:gif] == "1" ? true : false
+      device_info_use_function?(:gif)
     end
     
     def jpg?
-      Jpmobile::Mobile::Docomo::DEVICE_INFO[device_id][:jpg] == "1" ? true : false
+      device_info_use_function?(:jpg)
     end
     
     def png?
-      Jpmobile::Mobile::Docomo::DEVICE_INFO[device_id][:png] == "1" ? true : false
+      device_info_use_function?(:png)
     end
     
     private
@@ -110,6 +114,10 @@ module Jpmobile::Mobile
     # 画面の情報を含むハッシュを返す。
     def display_info
       DISPLAY_INFO[device_name] || {}
+    end
+    
+    def device_info_use_function?(function)
+      Jpmobile::Mobile::Docomo::DEVICE_INFO[device_id][function] == "1" ? true : false
     end
   end
 end
