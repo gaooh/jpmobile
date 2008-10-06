@@ -41,8 +41,9 @@ module Jpmobile::Mobile
     def png?; true; end
     
     def flash? ; true; end
-    
     def flash_version ; "2.0"; end
+    
+    def ssl? ; true; end
     
   end
   # ==DDI-POCKET

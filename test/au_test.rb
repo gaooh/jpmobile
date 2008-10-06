@@ -21,6 +21,7 @@ class AuTest < Test::Unit::TestCase
       assert_equal(true, req.mobile.png?)
       assert_equal(true, req.mobile.flash?)
       assert_equal("1.1", req.mobile.flash_version)
+      assert_equal(true, req.mobile.ssl?)
     end
   end
 
@@ -191,6 +192,7 @@ class AuTest < Test::Unit::TestCase
       assert_equal(false, req.mobile.png?)
       assert_equal(true, req.mobile.flash?)
       assert_equal("1.1", req.mobile.flash_version)
+      assert_equal(true, req.mobile.ssl?)
     end
   end
 end

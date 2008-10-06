@@ -65,6 +65,11 @@ module Jpmobile::Mobile
       self.class.device_info(device_id, :flash_version)
     end
     
+    # sslに対応しているか。
+    def ssl?
+      self.class.device_info(device_id, :ssl)
+    end
+    
     # 当該キャリアのIPアドレス帯域からのアクセスであれば +true+ を返す。
     # そうでなければ +false+ を返す。
     # IP空間が定義されていない場合は +nil+ を返す。

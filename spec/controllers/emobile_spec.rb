@@ -43,6 +43,9 @@ describe "H11T モバイルブラウザからのアクセス", :behaviour_type=>
   it "のflashバージョン は 2.0 であること" do
     request.mobile.flash_version.should == "2.0"
   end
+  it "のssl? は true であること" do
+    request.mobile.ssl?.should be_true
+  end
 end
 
 describe "S11HT からのアクセス", :behaviour_type=>:controller do
@@ -79,5 +82,8 @@ describe "S11HT からのアクセス", :behaviour_type=>:controller do
   end
   it "はオープンブラウザなのでflash_versionは未対応" do
     request.mobile.flash_version.should be_nil
+  end
+  it "はオープンブラウザなのでssl?は未対応" do
+    request.mobile.ssl?.should be_nil
   end
 end

@@ -23,6 +23,7 @@ class SoftbankTest < Test::Unit::TestCase
       assert_equal(true, req.mobile.png?)
       assert_equal(true, req.mobile.flash?)
       assert_equal("2.0", req.mobile.flash_version)
+      assert_equal(true, req.mobile.ssl?)
     end
   end
 
@@ -58,6 +59,7 @@ class SoftbankTest < Test::Unit::TestCase
       assert_equal(true, req.mobile.png?)
       assert_equal(false, req.mobile.flash?)
       assert_equal(nil, req.mobile.flash_version)
+      assert_equal(true, req.mobile.ssl?)
     end
   end
 
@@ -83,6 +85,7 @@ class SoftbankTest < Test::Unit::TestCase
       assert_equal(true, req.mobile.png?)
       assert_equal(true, req.mobile.flash?)
       assert_equal("1.1", req.mobile.flash_version)
+      assert_equal(true, req.mobile.ssl?)
     end
   end
 
@@ -108,6 +111,7 @@ class SoftbankTest < Test::Unit::TestCase
       assert_equal(true, req.mobile.png?)
       assert_equal(false, req.mobile.flash?)
       assert_equal(nil, req.mobile.flash_version)
+      assert_equal(true, req.mobile.ssl?)
     end
   end
 
@@ -130,6 +134,7 @@ class SoftbankTest < Test::Unit::TestCase
       assert_equal(true, req.mobile.png?)
       assert_equal(false, req.mobile.flash?)
       assert_equal(nil, req.mobile.flash_version)
+      assert_equal(false, req.mobile.ssl?)
     end
   end
 
@@ -237,6 +242,7 @@ class SoftbankTest < Test::Unit::TestCase
       assert_equal(true, req.mobile.png?)
       assert_equal(false, req.mobile.flash?)
       assert_equal(nil, req.mobile.flash_version)
+      assert_equal(true, req.mobile.ssl?)
     end
   end
 end

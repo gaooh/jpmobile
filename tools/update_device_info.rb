@@ -17,7 +17,7 @@ INDEX_JPG            = 12 # JPG画像を閲覧できるか
 INDEX_PNG            = 13 # PNG画像を閲覧できるか
 INDEX_FLASH          = 14 # Flashを利用できるか
 INDEX_FLASH_VERSION  = 15 # Flashバージョン
-INDEX_SSL            = 21 # SSLが利用できるか
+INDEX_SSL            = 20 # SSLが利用できるか
 INDEX_CSS            = 23 # CSSが利用できるかどうか
 INDEX_GPS            = 24 # GPSが利用できるかどうか
 
