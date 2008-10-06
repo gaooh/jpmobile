@@ -73,32 +73,6 @@ module Jpmobile::Mobile
       @request.env['HTTP_USER_AGENT'] =~ /^SoftBank\/[^\/]+\/([^\/]+)\// ? $1 : nil
     end
     
-    def device_name
-      Jpmobile::Mobile::Softbank::DEVICE_INFO[device_id][:name]
-    end
-    
-    def css?
-      device_info_use_function?(:css)
-    end
-    
-    def gif?
-      device_info_use_function?(:gif)
-    end
-    
-    def jpg?
-      device_info_use_function?(:jpg)
-    end
-    
-    def png?
-      device_info_use_function?(:png)
-    end
-    
-    private 
-    
-    def device_info_use_function?(function)
-      Jpmobile::Mobile::Softbank::DEVICE_INFO[device_id][function] == "1" ? true : false
-    end
-    
   end
   # ==Vodafone 3G携帯電話(J-PHONE, SoftBank含まず)
   # スーパクラスはSoftbank。
@@ -115,10 +89,6 @@ module Jpmobile::Mobile
     
     def device_id
       @request.env['HTTP_USER_AGENT'] =~ /^Vodafone\/[^\/]+\/([^\/]+)\// ? $1 : nil
-    end
-    
-    def device_name
-      Jpmobile::Mobile::Softbank::DEVICE_INFO[device_id][:name]
     end
     
   end
@@ -150,10 +120,6 @@ module Jpmobile::Mobile
     
     def device_id
       @request.env['HTTP_USER_AGENT'] =~ /^J-PHONE\/[^\/]+\/([^\/]+)\/?/ ? $1 : nil
-    end
-    
-    def device_name
-      Jpmobile::Mobile::Softbank::DEVICE_INFO[device_id][:name]
     end
     
   end

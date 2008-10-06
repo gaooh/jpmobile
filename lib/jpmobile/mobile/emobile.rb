@@ -22,35 +22,6 @@ module Jpmobile::Mobile
         return $1
       end
     end
-    # 現状デバイスIDから名前をひく方法はないので
-    alias :device_name :device_id
-    
-    def css?
-      device_info_use_function?(:css)
-    end
-    
-    def gif?
-      device_info_use_function?(:gif)
-    end
-    
-    def jpg?
-      device_info_use_function?(:jpg)
-    end
-    
-    def png?
-      device_info_use_function?(:png)
-    end
-    
-    private 
-    
-    def device_info_use_function?(function)
-      # モバイルブラウザ以外は無条件に使えるものとみなす
-      if Jpmobile::Mobile::Emobile::DEVICE_INFO[device_id].nil?
-        return true
-      else
-        Jpmobile::Mobile::Emobile::DEVICE_INFO[device_id][function] == "1" ? true : false
-      end
-    end
     
   end
 end

@@ -26,6 +26,10 @@ au = {}
 softbank = {}
 emobile = {}
 
+def boolean_convert(value)
+  value == "1" ? true : false
+end
+  
 arryas = FasterCSV.parse(src)
 arryas.each_with_index do |array, index|
   next if index < 2
@@ -34,9 +38,11 @@ arryas.each_with_index do |array, index|
   device_ids.each do |device_id|
     device_id.strip!
     
-    info = { :name => array[INDEX_DEVICE_NAME], :gif => array[INDEX_GIF], :jpg => array[INDEX_JPG],
-             :png => array[INDEX_PNG], :flash => array[INDEX_FLASH], :flash_version => array[INDEX_FLASH_VERSION],
-             :ssl => array[INDEX_SSL], :css => array[INDEX_CSS], :gps => array[INDEX_GPS] }
+    flash_version = array[INDEX_FLASH_VERSION] == "" ? nil : array[INDEX_FLASH_VERSION]
+    
+    info = { :name => array[INDEX_DEVICE_NAME], :gif => boolean_convert(array[INDEX_GIF]), :jpg => boolean_convert(array[INDEX_JPG]),
+             :png => boolean_convert(array[INDEX_PNG]), :flash => boolean_convert(array[INDEX_FLASH]), :flash_version => flash_version,
+             :ssl => boolean_convert(array[INDEX_SSL]), :css => boolean_convert(array[INDEX_CSS]), :gps => boolean_convert(array[INDEX_GPS]) }
   
     case array[INDEX_CARRIER]
       when "DoCoMo"   ; docomo[device_id] = info 

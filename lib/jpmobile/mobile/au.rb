@@ -70,34 +70,14 @@ module Jpmobile::Mobile
       end
       @__display = Jpmobile::Display.new(p_w, p_h, nil, nil, col_p, cols)
     end
-
-    # デバイスIDを返す
+    
+    # デバイスIDがあれば返す。
     def device_id
       if @request.env['HTTP_USER_AGENT'] =~ USER_AGENT_REGEXP
         return $1
       else
         nil
       end
-    end
-    
-    def device_name
-      Jpmobile::Mobile::Au::DEVICE_INFO[device_id][:name]
-    end
-    
-    def css?
-      device_info_use_function?(:css)
-    end
-    
-    def gif?
-      device_info_use_function?(:gif)
-    end
-    
-    def jpg?
-      device_info_use_function?(:jpg)
-    end
-    
-    def png?
-      device_info_use_function?(:png)
     end
     
     # 簡易位置情報取得に対応している場合は +true+ を返す。
@@ -115,10 +95,5 @@ module Jpmobile::Mobile
       true
     end
     
-    private
-    
-    def device_info_use_function?(function)
-      Jpmobile::Mobile::Au::DEVICE_INFO[device_id][function] == "1" ? true : false
-    end
   end
 end

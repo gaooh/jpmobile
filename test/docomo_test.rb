@@ -21,6 +21,8 @@ class DocomoTest < Test::Unit::TestCase
       assert_equal(true, req.mobile.gif?)
       assert_equal(true, req.mobile.jpg?)
       assert_equal(false, req.mobile.png?)
+      assert_equal(true, req.mobile.flash?)
+      assert_equal("1.1", req.mobile.flash_version)
     end
   end
 
@@ -44,6 +46,8 @@ class DocomoTest < Test::Unit::TestCase
       assert_equal(true, req.mobile.gif?)
       assert_equal(true, req.mobile.jpg?)
       assert_equal(false, req.mobile.png?)
+      assert_equal(true, req.mobile.flash?)
+      assert_equal("1.0", req.mobile.flash_version)
     end
   end
 
@@ -169,6 +173,8 @@ class DocomoTest < Test::Unit::TestCase
       assert_equal(true, req.mobile.gif?)
       assert_equal(true, req.mobile.jpg?)
       assert_equal(false, req.mobile.png?)
+      assert_equal(true, req.mobile.flash?)
+      assert_equal("1.1", req.mobile.flash_version)
     end
   end
 end

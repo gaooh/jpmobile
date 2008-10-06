@@ -17,6 +17,8 @@ class WillcomTest < Test::Unit::TestCase
       assert_equal(true, req.mobile.gif?)
       assert_equal(true, req.mobile.jpg?)
       assert_equal(true, req.mobile.png?)
+      assert_equal(true, req.mobile.flash?)
+      assert_equal("2.0", req.mobile.flash_version)
     end
   end
 

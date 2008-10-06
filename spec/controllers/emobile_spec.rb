@@ -37,6 +37,12 @@ describe "H11T モバイルブラウザからのアクセス", :behaviour_type=>
   it "のpng? は true であること" do
     request.mobile.png?.should be_true
   end
+  it "のflash? は true であること" do
+    request.mobile.flash?.should be_true
+  end
+  it "のflashバージョン は 2.0 であること" do
+    request.mobile.flash_version.should == "2.0"
+  end
 end
 
 describe "S11HT からのアクセス", :behaviour_type=>:controller do
@@ -53,19 +59,25 @@ describe "S11HT からのアクセス", :behaviour_type=>:controller do
   it "のデバイスIDを取得できること" do
     request.mobile.device_id.should == "S11HT"
   end
-  it "の機種名を取得できること" do
-    request.mobile.device_name.should == "S11HT"
+  it "はオープンブラウザなので機種名取得は未対応" do
+    request.mobile.device_name.should be_nil
   end
-  it "のcss? は true であること" do
-    request.mobile.css?.should be_true
+  it "はオープンブラウザなのでcss?は未対応" do
+    request.mobile.css?.should be_nil
   end
-  it "のgif? は true であること" do
-    request.mobile.gif?.should be_true
+  it "はオープンブラウザなのでgif?は未対応" do
+    request.mobile.gif?.should be_nil
   end
-  it "のjpg? は true であること" do
-    request.mobile.jpg?.should be_true
+  it "はオープンブラウザなのでjpg?は未対応" do
+    request.mobile.jpg?.should be_nil
   end
-  it "のpng? は true であること" do
-    request.mobile.png?.should be_true
+  it "はオープンブラウザなのでpng?は未対応" do
+    request.mobile.png?.should be_nil
+  end
+  it "はオープンブラウザなのでflash?は未対応" do
+    request.mobile.flash?.should be_nil
+  end
+  it "はオープンブラウザなのでflash_versionは未対応" do
+    request.mobile.flash_version.should be_nil
   end
 end

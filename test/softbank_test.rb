@@ -21,6 +21,8 @@ class SoftbankTest < Test::Unit::TestCase
       assert_equal(true, req.mobile.gif?)
       assert_equal(true, req.mobile.jpg?)
       assert_equal(true, req.mobile.png?)
+      assert_equal(true, req.mobile.flash?)
+      assert_equal("2.0", req.mobile.flash_version)
     end
   end
 
@@ -54,6 +56,8 @@ class SoftbankTest < Test::Unit::TestCase
       assert_equal(true, req.mobile.gif?)
       assert_equal(true, req.mobile.jpg?)
       assert_equal(true, req.mobile.png?)
+      assert_equal(false, req.mobile.flash?)
+      assert_equal(nil, req.mobile.flash_version)
     end
   end
 
@@ -77,6 +81,8 @@ class SoftbankTest < Test::Unit::TestCase
       assert_equal(true, req.mobile.gif?)
       assert_equal(true, req.mobile.jpg?)
       assert_equal(true, req.mobile.png?)
+      assert_equal(true, req.mobile.flash?)
+      assert_equal("1.1", req.mobile.flash_version)
     end
   end
 
@@ -100,6 +106,8 @@ class SoftbankTest < Test::Unit::TestCase
       assert_equal(false, req.mobile.gif?)
       assert_equal(true, req.mobile.jpg?)
       assert_equal(true, req.mobile.png?)
+      assert_equal(false, req.mobile.flash?)
+      assert_equal(nil, req.mobile.flash_version)
     end
   end
 
@@ -120,6 +128,8 @@ class SoftbankTest < Test::Unit::TestCase
       assert_equal(false, req.mobile.gif?)
       assert_equal(true, req.mobile.jpg?)
       assert_equal(true, req.mobile.png?)
+      assert_equal(false, req.mobile.flash?)
+      assert_equal(nil, req.mobile.flash_version)
     end
   end
 
@@ -225,6 +235,8 @@ class SoftbankTest < Test::Unit::TestCase
       assert_equal(true, req.mobile.gif?)
       assert_equal(true, req.mobile.jpg?)
       assert_equal(true, req.mobile.png?)
+      assert_equal(false, req.mobile.flash?)
+      assert_equal(nil, req.mobile.flash_version)
     end
   end
 end
