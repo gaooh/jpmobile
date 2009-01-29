@@ -76,21 +76,5 @@ class ActionView::Base #:nodoc:
     end
     return nil
   end
-
-  def mobile_template_path(template_path, partial=false)
-    if controller.is_a?(ActionController::Base) && m = controller.request.mobile
-      mobile_template_candidates.each do |v|
-        mpath = mobile_path template_path, v
-        if partial
-          full_path = mobile_template_partial mpath
-        else
-          full_path = mpath
-        end
-        if finder.file_exists?(full_path)
-          return mpath
-        end
-      end
-    end
-    return nil
-  end
+  
 end

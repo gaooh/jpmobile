@@ -23,9 +23,8 @@ module Jpmobile::Mobile
     def ident_device; nil; end
     
     def self.device_info device, key
-      #device_info = self::DEVICE_INFO[device] 
-      #device_info.nil? ? nil : device_info[key]
-      Jpmobile::Model::JpmobileDevice.find(device)
+      device_info = self::DEVICE_INFO[device] 
+      device_info.nil? ? nil : device_info[key]
     end
     
     # デバイスIDがあれば返す。
