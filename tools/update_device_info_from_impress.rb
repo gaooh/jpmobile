@@ -57,6 +57,7 @@ arryas.each_with_index do |array, index|
   end
   
 end
+
 au_device.each_value do |value|
   value.uniq!
 end
