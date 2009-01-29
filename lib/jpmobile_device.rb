@@ -21,6 +21,7 @@ class JpmobileDevice < ActiveRecord::Base
     end
   end
   
+  # gps機能が利用可能かを判断する
   def gps?
     self.gps
   end
